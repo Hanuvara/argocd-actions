@@ -25,6 +25,7 @@ jobs:
         with:
           address: "vault.example.com"
           token: ${{ secrets.ARGOCD_TOKEN }}
+          insecure: "true"
           appName: "my-example-app"
 ```
 

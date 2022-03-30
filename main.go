@@ -11,9 +11,9 @@ import (
 )
 
 func main() {
-	insecure, err := strconv.ParseBool(os.Getenv("IS_INSECURE"))
+	insecure, err := strconv.ParseBool(os.Getenv("INPUT_INSECURE"))
 	if err != nil {
-		log.Fatal("error: IS_INSECURE failed to parse as bool")
+		log.Fatal("error: INPUT_INSECURE failed to parse as bool")
 	}
 
 	options := argocd.APIOptions{
