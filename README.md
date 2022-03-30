@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Sync ArgoCD Application
-        uses: omegion/argocd-app-actions@master
+        uses: butterfly1924/argocd-actions@master
         with:
           address: "vault.example.com"
           token: ${{ secrets.ARGOCD_TOKEN }}
@@ -35,6 +35,7 @@ jobs:
 | --- | --- |
 | `address` | ArgoCD server address. |
 | `token` | ArgoCD Token. |
+| `inseucre` | Whether argocd is insecure |
 | `appName` | Application name to sync. |
 
 ## Examples
@@ -52,10 +53,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Sync ArgoCD Application
-        uses: omegion/argocd-app-actions@master
+        uses: butterfly1924/argocd-actions@master
         with:
           address: "vault.example.com"
           token: ${{ secrets.ARGOCD_TOKEN }}
+          insecure: "true"
           appName: "my-example-app"
 ```
 
