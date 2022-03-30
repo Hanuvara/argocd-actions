@@ -1,4 +1,4 @@
-name: "ArgoCD Application Sync Action"
+name: "ArgoCD Application Sync Action (allow insecure)"
 description: "Sync your ArgoCD application from GitHub"
 author: "omegion"
 inputs:
