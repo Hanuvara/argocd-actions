@@ -11,6 +11,9 @@ inputs:
   appName:
     description: "Application name to sync"
     required: true
+  insecure:
+    description: "Whether server is insecure"
+    required: true
 runs:
   using: "docker"
   image: "Dockerfile"
