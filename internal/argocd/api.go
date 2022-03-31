@@ -6,7 +6,6 @@ import (
 
 	argocdclient "github.com/argoproj/argo-cd/v2/pkg/apiclient"
 	applicationpkg "github.com/argoproj/argo-cd/v2/pkg/apiclient/application"
-	v1alpha1 "github.com/argoproj/argo-cd/v2/pkg/apis/application/v1alpha1"
 	argoio "github.com/argoproj/argo-cd/v2/util/io"
 )
 
@@ -48,17 +47,25 @@ func NewAPI(options APIOptions) API {
 
 // Set application parameter image.tag for a give application
 func (a API) SetImageTag(appName string, tag string) error {
-	request := applicationpkg.ApplicationUpdateSpecRequest{
+	applicationSpec, err := a.client.Get(context.Background(), &applicationpkg.ApplicationQuery{
 		Name: &appName,
-		Spec: v1alpha1.ApplicationSpec{
-			Info: []v1alpha1.Info{{
-				Name:  "image.tag",
-				Value: tag,
-			}},
-		},
+	})
+	if err != nil {
+		// Get App Name Failed
+		return err
 	}
 
-	_, err := a.client.UpdateSpec(context.Background(), &request)
+	for index := range applicationSpec.Spec.Source.Helm.Parameters {
+		if applicationSpec.Spec.Source.Helm.Parameters[index].Name == "image.tag" {
+			applicationSpec.Spec.Source.Helm.Parameters[index].Value = tag
+		}
+	}
+	request := applicationpkg.ApplicationUpdateSpecRequest{
+		Name: &appName,
+		Spec: applicationSpec.Spec,
+	}
+
+	_, err = a.client.UpdateSpec(context.Background(), &request)
 	if err != nil {
 		return err
 	}
