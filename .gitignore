@@ -17,5 +17,9 @@
 # JetBrains
 .idea
 
+# VSCode
+.vscode
+.vscode/launch.json
+
 # Build
 dist

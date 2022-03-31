@@ -50,6 +50,7 @@ func (a API) SetImageTag(appName string, tag string) error {
 	applicationSpec, err := a.client.Get(context.Background(), &applicationpkg.ApplicationQuery{
 		Name: &appName,
 	})
+
 	if err != nil {
 		// Get App Name Failed
 		return err
@@ -69,8 +70,6 @@ func (a API) SetImageTag(appName string, tag string) error {
 	if err != nil {
 		return err
 	}
-
-	defer argoio.Close(a.connection)
 
 	return nil
 }
