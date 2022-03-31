@@ -16,3 +16,7 @@ func NewController(api argocd.Interface) *Controller {
 func (c Controller) Sync(appName string) error {
 	return c.API.Sync(appName)
 }
+
+func (c Controller) SetImageTag(appName string, tag string) error {
+	return c.API.SetImageTag(appName, tag)
+}

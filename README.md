@@ -27,6 +27,7 @@ jobs:
           token: ${{ secrets.ARGOCD_TOKEN }}
           insecure: "true"
           appName: "my-example-app"
+          imageTag: "dev"
 ```
 
 ### Inputs
@@ -59,6 +60,7 @@ jobs:
           token: ${{ secrets.ARGOCD_TOKEN }}
           insecure: "true"
           appName: "my-example-app"
+          imageTag: "dev"
 ```
 
 ## Publishing

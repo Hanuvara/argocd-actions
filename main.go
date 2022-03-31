@@ -25,7 +25,12 @@ func main() {
 	api := argocd.NewAPI(options)
 	controller := ctrl.NewController(api)
 
-	err = controller.Sync(os.Getenv("INPUT_APPNAME"))
+	appName := os.Getenv("INPUT_APPNAME")
+	imageTag := os.Getenv("INPUT_IMAGETAG")
+
+	controller.SetImageTag(appName, imageTag)
+
+	err = controller.Sync(appName)
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
