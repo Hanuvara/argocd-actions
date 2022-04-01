@@ -20,4 +20,4 @@ inputs:
 
 runs:
   using: "docker"
-  image: "docker://bardolphshampine77769/argocd-actions:v1.1.0"
+  image: "docker://rekruti/argocd-actions:v1.1.1"
