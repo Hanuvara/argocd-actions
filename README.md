@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Sync ArgoCD Application
-        uses: butterfly1924/argocd-actions@master
+        uses: rekruti/argocd-actions@master
         with:
           address: "vault.example.com"
           token: ${{ secrets.ARGOCD_TOKEN }}
@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Sync ArgoCD Application
-        uses: butterfly1924/argocd-actions@master
+        uses: rekruti/argocd-actions@master
         with:
           address: "vault.example.com"
           token: ${{ secrets.ARGOCD_TOKEN }}
